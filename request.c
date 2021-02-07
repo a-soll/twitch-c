@@ -1,7 +1,6 @@
 #include "request.h"
 #include "util.h"
 #include <curl/curl.h>
-// #include <json-c/json.h>
 
 CURLcode login(struct Client *client, CURL *curl_handle) {
     char url[500];

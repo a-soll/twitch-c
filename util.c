@@ -19,8 +19,8 @@ size_t WriteMemoryCallback(void *contents, size_t size, size_t nmemb, void *user
     return realsize;
 }
 
-const char* get_key(struct json_object *from, const char* key) {
-    struct json_object* val;
+const char *get_key(struct json_object *from, const char *key) {
+    struct json_object *val;
 
     json_object_object_get_ex(from, key, &val);
 

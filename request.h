@@ -1,7 +1,8 @@
-#include <curl/curl.h>
 #include "util.h"
+#include <curl/curl.h>
 
 struct Client {
+    const char *url;
     const char *client_id;
     const char *client_secret;
     char *memory;

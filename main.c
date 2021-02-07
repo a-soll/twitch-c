@@ -13,6 +13,7 @@ int main() {
     char buffer[200];
 
     struct Client client;
+    client.url = "https://api.twitch.tv/helix";
     client.memory = malloc(1);
     client.size = 0;
     client.client_id = client_id;
@@ -26,5 +27,6 @@ int main() {
     login(&client, curl_handle);
     printf("%s\n", client.bearer);
 
+    free(client.memory);
     return 0;
 }
