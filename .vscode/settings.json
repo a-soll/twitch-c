@@ -1,0 +1,12 @@
+{
+"code-runner.executorMapByGlob": {
+    "main.c": "cd $dir && gcc -o curl -lcurl -ljson-c main.c util.c request.c && ./curl",
+    "pom.xml": "cd $dir && mvn clean package",
+    "test.c": "cd $dir && gcc -ljson-c test.c -o test && ./test"
+  },
+  "files.associations": {
+    "json.h": "c",
+    "json_util.h": "c",
+    "json_tokener.h": "c"
+  },
+}
