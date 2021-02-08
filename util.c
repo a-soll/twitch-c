@@ -42,6 +42,6 @@ int fmt_string(char *to, const char *s, ...) {
 void clean_up(void *client) {
     struct Client *mem = (struct Client *)client;
 
-    mem->memory = malloc(1);
+    mem->memory = NULL;
     mem->size = 0;
 }

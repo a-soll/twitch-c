@@ -25,8 +25,7 @@ int main() {
 
     login(&client);
     search(&client, "channels", "query=loserfruit");
-    // search(&client, "channels", "query=pokimane");
-    free(client.memory);
 
+    free(client.memory);
     return 0;
 }

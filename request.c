@@ -44,8 +44,6 @@ void get(struct Client *client, const char *endpoint, const char *params) {
     curl_easy_perform(client->curl_handle);
     client->fields = json_tokener_parse(client->memory);
 
-    printf("%s\n", url);
-    printf("%s\n", client->memory);
 }
 
 void search(struct Client *client, const char *endpoint, const char *params) {
