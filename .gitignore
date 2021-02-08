@@ -2,3 +2,4 @@ test*
 curl
 creds.c
 *.dSYM
+request

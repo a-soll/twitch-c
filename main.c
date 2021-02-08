@@ -8,7 +8,6 @@
 #include <string.h>
 
 int main() {
-    CURL *curl_handle;
     CURLcode res;
     char buffer[200];
 
@@ -19,14 +18,15 @@ int main() {
     client.client_id = client_id;
     client.client_secret = client_secret;
     client.headers = NULL;
+    client.curl_handle = NULL;
 
     struct json_object *parsed_json;
 
-    curl_handle = curl_easy_init();
 
-    login(&client, curl_handle);
-    printf("%s\n", client.bearer);
-
+    login(&client);
+    search(&client, "channels", "query=loserfruit");
+    // search(&client, "channels", "query=pokimane");
     free(client.memory);
+
     return 0;
 }

@@ -28,7 +28,7 @@ const char *get_key(struct json_object *from, const char *key) {
 }
 
 // formats string to provided array and returns length
-int fmt_string(char to[], const char *s, ...) {
+int fmt_string(char *to, const char *s, ...) {
     va_list ap;
     int ret;
 
@@ -37,4 +37,11 @@ int fmt_string(char to[], const char *s, ...) {
     va_end(ap);
 
     return ret;
+}
+
+void clean_up(void *client) {
+    struct Client *mem = (struct Client *)client;
+
+    mem->memory = malloc(1);
+    mem->size = 0;
 }
