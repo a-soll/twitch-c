@@ -20,12 +20,13 @@ int main() {
     client.headers = NULL;
     client.curl_handle = NULL;
 
-    struct json_object *parsed_json;
-
 
     login(&client);
     search(&client, "channels", "query=loserfruit");
 
+    json_object_put(client.fields);
+    curl_slist_free_all(client.headers);
+    curl_easy_cleanup(client.curl_handle);
     free(client.memory);
     return 0;
 }

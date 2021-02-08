@@ -35,6 +35,7 @@ void get(struct Client *client, const char *endpoint, const char *params) {
     CURLcode res;
     char url[100];
 
+    json_object_put(client->fields);
     fmt_string(url, "%s/%s?%s", client->url, endpoint, params);
     curl_easy_setopt(client->curl_handle, CURLOPT_URL, url);
     curl_easy_setopt(client->curl_handle, CURLOPT_HTTPHEADER, client->headers);
@@ -50,6 +51,7 @@ void search(struct Client *client, const char *endpoint, const char *params) {
     CURLcode res;
     char url[100];
 
+    json_object_put(client->fields);
     fmt_string(url, "%s/search/%s?%s", client->url, endpoint, params);
     curl_easy_setopt(client->curl_handle, CURLOPT_URL, url);
     curl_easy_setopt(client->curl_handle, CURLOPT_CUSTOMREQUEST, "GET");
