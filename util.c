@@ -1,5 +1,6 @@
 #include "util.h"
 #include "request.h"
+#include "models/client.h"
 #include <stdarg.h>
 
 size_t WriteMemoryCallback(void *contents, size_t size, size_t nmemb, void *userp) {
