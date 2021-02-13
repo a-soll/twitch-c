@@ -15,7 +15,6 @@ size_t WriteMemoryCallback(void *contents, size_t size, size_t nmemb, void *user
     memcpy(&(mem->memory[mem->size]), contents, realsize);
     mem->size += realsize;
     mem->memory[mem->size] = 0;
-
     return realsize;
 }
 
@@ -41,7 +40,7 @@ int fmt_string(char *to, const char *s, ...) {
 
 void clean_up(void *client) {
     struct Client *mem = (struct Client *)client;
-
+    free(mem->memory);
     mem->memory = NULL;
     mem->size = 0;
 }

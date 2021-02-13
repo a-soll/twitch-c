@@ -1,4 +1,4 @@
-#include "creds.c" // client_id and cliend_secret
+#include "creds.h" // client_id and cliend_secret
 #include "request.h"
 #include "util.h"
 #include <curl/curl.h>
@@ -8,11 +8,9 @@
 #include <string.h>
 
 int main() {
-    CURLcode res;
-    char buffer[200];
-
     struct Client client;
     client.url = "https://api.twitch.tv/helix";
+    client.fields = json_object_new_object();
     client.memory = malloc(1);
     client.size = 0;
     client.client_id = client_id;
@@ -22,7 +20,11 @@ int main() {
 
 
     login(&client);
+
     search(&client, "channels", "query=loserfruit");
+    // search(&client, "channels", "query=loserfruit");
+
+    // printf("%s\n", json_object_to_json_string(client.fields));
 
     json_object_put(client.fields);
     curl_slist_free_all(client.headers);

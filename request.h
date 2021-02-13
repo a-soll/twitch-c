@@ -12,7 +12,7 @@ struct Client {
     CURL *curl_handle;
 };
 
-CURLcode login(struct Client *client);
+void login(struct Client *client);
 
 void get(struct Client *client, const char *endpoint, const char *params);
 
