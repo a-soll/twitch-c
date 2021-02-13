@@ -18,14 +18,12 @@ int main() {
     client.headers = NULL;
     client.curl_handle = NULL;
 
-
     login(&client);
 
-    search(&client, "channels", "query=loserfruit");
+    search(&client, "channels", "query=sodapoppin");
     // search(&client, "channels", "query=loserfruit");
-
+    printf("%s\n", json_object_to_json_string_ext(client.fields, JSON_C_TO_STRING_PRETTY));
     // printf("%s\n", json_object_to_json_string(client.fields));
-
     json_object_put(client.fields);
     curl_slist_free_all(client.headers);
     curl_easy_cleanup(client.curl_handle);
