@@ -1,6 +1,6 @@
 {
 "code-runner.executorMapByGlob": {
-    "main.c": "cd $dir && gcc -o curl -lcurl -ljson-c main.c util.c models/client.c && ./curl",
+    "main.c": "cd $dir && gcc -o curl -lcurl -ljson-c main.c util.c models/client.c models/channel.c && ./curl",
     "pom.xml": "cd $dir && mvn clean package",
     "test.c": "cd $dir && gcc -ljson-c test.c -o test && ./test"
   },

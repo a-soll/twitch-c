@@ -8,7 +8,7 @@
 
 size_t WriteMemoryCallback(void *contents, size_t size, size_t nmemb, void *userp);
 
-const char *get_key(struct json_object *from, const char *key);
+const char* get_key(struct json_object *from, const char *key);
 
 int fmt_string(char *to, const char *s, ...);
 

@@ -1,8 +1,9 @@
-#include "client.h"
 #include <stdbool.h>
+#include "client.h"
 
 typedef struct Channel {
-    char loginid[25];
+    const char *endpoint;
+    const char *loginid;
     char id[10];
     bool is_live;
     char started_at[5];
@@ -13,4 +14,5 @@ void Channel_init(Channel *c);
 
 void Channel_deinit(Channel *c);
 
-void Channel_get(Client *client, Channel *c);
+// Search for a channel by channel login name
+void Channel_get(Client *client, Channel *c, const char *login_name);

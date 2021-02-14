@@ -1,5 +1,6 @@
 #include "util.h"
 #include "models/client.h"
+#include <curl/curl.h>
 #include <stdarg.h>
 
 size_t WriteMemoryCallback(void *contents, size_t size, size_t nmemb, void *userp) {
@@ -19,11 +20,13 @@ size_t WriteMemoryCallback(void *contents, size_t size, size_t nmemb, void *user
 }
 
 const char *get_key(struct json_object *from, const char *key) {
-    struct json_object *val;
+    const char *val;
+    struct json_object *tmp;
 
-    json_object_object_get_ex(from, key, &val);
+    tmp = json_object_object_get(from, key);
+    val = json_object_get_string(tmp);
 
-    return json_object_get_string(val);
+    return val;
 }
 
 // formats string to provided array and returns length

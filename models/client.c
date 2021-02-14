@@ -1,6 +1,4 @@
 #include "client.h"
-#include "../util.h"
-#include <curl/curl.h>
 
 void Client_init(Client *c, const char *client_id, const char *client_secret) {
     c->url = "https://api.twitch.tv/helix";
@@ -35,7 +33,7 @@ void Client_login(Client *client) {
     curl_easy_perform(client->curl_handle);
 
     client->fields = json_tokener_parse(client->memory);
-    
+
     // set client headers
     client->headers = curl_slist_append(client->headers, "Content-Type: application/json");
     client->headers = curl_slist_append(client->headers, "Accept: application/json");
@@ -54,13 +52,18 @@ void search(Client *client, const char *endpoint, const char *params) {
 
     json_object_put(client->fields);
     fmt_string(url, "%s/search/%s?%s", client->url, endpoint, params);
+
+    curl_get(client, url);
+
+    res = curl_easy_perform(client->curl_handle);
+    client->fields = json_tokener_parse(client->memory);
+    clean_up(client);
+}
+
+void curl_get(Client *client, const char *url) {
     curl_easy_setopt(client->curl_handle, CURLOPT_URL, url);
     curl_easy_setopt(client->curl_handle, CURLOPT_CUSTOMREQUEST, "GET");
     curl_easy_setopt(client->curl_handle, CURLOPT_HTTPHEADER, client->headers);
     curl_easy_setopt(client->curl_handle, CURLOPT_WRITEFUNCTION, WriteMemoryCallback);
     curl_easy_setopt(client->curl_handle, CURLOPT_WRITEDATA, (void *)client);
-
-    res = curl_easy_perform(client->curl_handle);
-    client->fields = json_tokener_parse(client->memory);
-    clean_up(client);
 }
