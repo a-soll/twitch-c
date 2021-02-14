@@ -1,6 +1,6 @@
 #include "creds.h" // client_id and cliend_secret
-#include "util.h"
 #include "models/client.h"
+#include "util.h"
 #include <curl/curl.h>
 #include <json-c/json.h>
 #include <stdio.h>

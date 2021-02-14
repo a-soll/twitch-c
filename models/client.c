@@ -14,7 +14,7 @@ void Client_init(Client *c, const char *client_id, const char *client_secret) {
 }
 
 void Client_deinit(Client *c) {
-    c->fields != NULL && json_object_put(c->fields);
+    c->fields != NULL &&json_object_put(c->fields);
     free(c->memory);
     curl_slist_free_all(c->headers);
     curl_easy_cleanup(c->curl_handle);
@@ -35,7 +35,7 @@ void Client_login(Client *client) {
     curl_easy_perform(client->curl_handle);
 
     client->fields = json_tokener_parse(client->memory);
-
+    
     // set client headers
     client->headers = curl_slist_append(client->headers, "Content-Type: application/json");
     client->headers = curl_slist_append(client->headers, "Accept: application/json");

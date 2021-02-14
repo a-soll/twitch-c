@@ -7,6 +7,6 @@ void Channel_deinit(Channel *c) {
     free(c->title);
 }
 
-void Channel_get(Client *client, const char *c) {
+void Channel_get(Client *client, Channel *c) {
     
 }
