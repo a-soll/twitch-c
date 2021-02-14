@@ -1,5 +1,4 @@
 #include "creds.h" // client_id and cliend_secret
-#include "request.h"
 #include "util.h"
 #include "models/client.h"
 #include <curl/curl.h>
@@ -14,7 +13,7 @@ int main() {
 
     Client_login(&client);
 
-    // search(&client, "channels", "query=sodapoppin");
+    // Channel_search(&client, "channels", "query=sodapoppin");
     // search(&client, "channels", "query=loserfruit");
     printf("%s\n", json_object_to_json_string_ext(client.fields, JSON_C_TO_STRING_PRETTY));
 

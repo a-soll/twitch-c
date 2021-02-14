@@ -1,5 +1,4 @@
 #include "util.h"
-#include "request.h"
 #include "models/client.h"
 #include <stdarg.h>
 

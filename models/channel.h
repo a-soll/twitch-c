@@ -1,4 +1,5 @@
 #include <stdbool.h>
+#include "client.h"
 
 typedef struct Channel {
     char loginid[25];
@@ -10,4 +11,6 @@ typedef struct Channel {
 
 void Channel_init(Channel *c);
 
-void Channel_get()
+void Channel_deinit(Channel *c);
+
+void Channel_get(Client *client, Channel *c)

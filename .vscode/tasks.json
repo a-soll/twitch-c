@@ -12,7 +12,7 @@
                 "-ljson-c",
                 "main.c",
                 "util.c",
-                "request.c",
+                "models/client.c",
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
