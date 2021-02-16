@@ -8,7 +8,7 @@
             "name": "gcc - Build and debug active file",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${fileDirname}/curl",
+            "program": "${workspaceFolder}/curl",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",

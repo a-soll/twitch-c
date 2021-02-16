@@ -20,13 +20,11 @@ size_t WriteMemoryCallback(void *contents, size_t size, size_t nmemb, void *user
 }
 
 const char *get_key(struct json_object *from, const char *key) {
-    const char *val;
-    struct json_object *tmp;
+    struct json_object *val;
 
-    tmp = json_object_object_get(from, key);
-    val = json_object_get_string(tmp);
+    json_object_object_get_ex(from, key, &val);
 
-    return val;
+    return json_object_get_string(val);
 }
 
 // formats string to provided array and returns length
@@ -44,6 +42,7 @@ int fmt_string(char *to, const char *s, ...) {
 void clean_up(void *client) {
     struct Client *mem = (struct Client *)client;
     free(mem->memory);
-    mem->memory = NULL;
+    mem->memory = malloc(1);
+    curl_easy_cleanup(mem->curl_handle);
     mem->size = 0;
 }

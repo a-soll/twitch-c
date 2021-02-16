@@ -1,12 +1,23 @@
 {
-"code-runner.executorMapByGlob": {
-    "main.c": "cd $dir && gcc -o curl -lcurl -ljson-c main.c util.c models/client.c models/channel.c && ./curl",
+  "code-runner.executorMapByGlob": {
+    "main.c": "cd $dir && gcc -Wall -o curl -lcurl -ljson-c main.c util.c models/client.c models/channel.c && ./curl",
     "pom.xml": "cd $dir && mvn clean package",
     "test.c": "cd $dir && gcc -ljson-c test.c -o test && ./test"
   },
   "files.associations": {
     "json.h": "c",
     "json_util.h": "c",
-    "json_tokener.h": "c"
+    "json_tokener.h": "c",
+    "client.h": "c",
+    "util.h": "c",
+    "stdio.h": "c",
+    "curl.h": "c"
   },
+  "code-runner.executorMapByFileExtension": {
+    ".c": "cd $workspace && gcc -o curl -I/usr/local/Cellar/curl/7.75.0/include/curl/ -L/usr/local/Cellar/curl/7.57.0/lib -ljson-c main.c util.c models/client.c models/channel.c && ./curl"
+  },
+  "C_Cpp.default.includePath": [
+    "/usr/local/opt/curl/include/",
+    "/usr/local/include/"
+  ]
 }

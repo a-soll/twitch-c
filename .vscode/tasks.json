@@ -13,6 +13,7 @@
                 "main.c",
                 "util.c",
                 "models/client.c",
+                "models/channel.c"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
