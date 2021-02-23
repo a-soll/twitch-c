@@ -7,6 +7,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define sprint(s)   printf("%s\n", s);
+
 int main() {
     Client client;
     Client_init(&client, client_id, client_secret);
@@ -14,9 +16,11 @@ int main() {
 
     Channel channel;
     Channel_init(&channel);
-    Channel_get(&client, &channel, "loserfruit");
+    Channel_get(&client, &channel, "galoiska");
     puts(channel.id);
+    puts(channel.started_at);
 
+    sprint(channel.id);
     Client_deinit(&client);
 
     return 0;

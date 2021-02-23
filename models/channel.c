@@ -37,11 +37,17 @@ void Channel_get(Client *client, Channel *c, const char *login_name) {
 
     // TODO: populate all Channel fields
     for (int i = 0; i < json_object_array_length(data); i++) {
-        data_array_obj = json_object_array_get_idx(data, i); // json inside data[] array
+        data_array_obj = json_object_array_get_idx(data, i); // the json inside data[] array
         login = get_key(data_array_obj, "broadcaster_login");
         if (strcmp(login, login_name) == 0) {
+            strcmp(c->broadcaster_language, get_key(data_array_obj, "broadcaster_language"));
             c->loginid = login;
             strcpy(c->id, get_key(data_array_obj, "id"));
+            c->is_live = (bool)get_key(data_array_obj, "is_live");
+            strcpy(c->started_at, get_key(data_array_obj, "started_at"));
+            strcpy(c->title, get_key(data_array_obj, "title"));
+            strcpy(c->thumbnail_url, get_key(data_array_obj, "thumbnail_url"));
+            printf("%s\n", json_object_to_json_string_ext(data_array_obj, JSON_C_TO_STRING_PRETTY));
             break;
         }
     }
